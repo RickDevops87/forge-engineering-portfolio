@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Forge — Engineering & Security Portfolio</title>
+<style>
+:root{color-scheme:dark;--bg:#061321;--panel:#102739;--line:#2b6176;--cyan:#78e6ec;--copper:#eeb888;--white:#e9f7ff;--muted:#b3ccd8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% 0%,#144355 0,transparent 43%),var(--bg);color:var(--white);font:16px/1.5 system-ui,-apple-system,Arial,sans-serif}
+a{color:var(--cyan)} .wrap{max-width:1320px;margin:auto;padding:24px 36px}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 0 28px;border-bottom:1px solid #2c6071}
+.brand{font-size:17px;font-weight:800;letter-spacing:3px} .brand span{color:var(--cyan)}
+nav{color:var(--muted);font-size:12px;letter-spacing:1.2px;text-transform:uppercase}
+.hero{padding:72px 0 61px;max-width:1050px}
+.kicker,.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:12px}
+h1{font-size:clamp(45px,6vw,86px);line-height:1.07;letter-spacing:-2.5px;margin:20px 0 23px}
+h1 em{font-style:normal;color:var(--copper)}.lead{font-size:19px;max-width:830px;color:var(--muted)}
+.stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:32px}.stats b{font-size:27px;display:block;color:var(--white)}.stats span{color:var(--muted);font-size:13px}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--line);padding:30px 0 24px;gap:20px}
+.sectionhead h2{font-size:28px;margin:0}.sectionhead p{margin:0;color:var(--muted);max-width:500px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.card{background:linear-gradient(160deg,#102b40,#0a1c2f);border:1px solid #26536b;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px #0004}
+.poster{background:#061a2b;aspect-ratio:16/9}.poster video{width:100%;height:100%;object-fit:contain;background:#061522;display:block}
+.content{padding:23px 24px 22px}.content h2{font-size:23px;margin:9px 0}.content p{color:var(--muted);margin:0 0 14px;min-height:0}.content p.proof-note{color:#bce2df;font-size:14px}.content p.repo-note{margin-top:8px;font-size:14px;font-weight:650}.content p.repo-unavailable{color:#d2b7a7;font-weight:500}.content p.limit-note{color:#dfc4a6;font-size:13px;margin-bottom:20px}
+.meta{border-top:1px solid #2b5262;padding-top:16px;display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;color:#aac9d6;font-size:12px}
+.note{margin:52px 0 22px;border-left:3px solid var(--copper);padding:18px 25px;background:#0f2a37}
+.note strong{color:var(--copper)}.note p{margin:6px 0 0;color:var(--muted)}
+footer{padding:28px 0 50px;color:var(--muted);font-size:13px;border-top:1px solid #2d566c;margin-top:44px}
+@media(max-width:850px){.wrap{padding:16px}.hero{padding:48px 0}.grid{grid-template-columns:1fr}h1{letter-spacing:-1.4px}.sectionhead{display:block}.content p{min-height:0}}
+.value-tagline{color:var(--cyan)!important;font-size:19px;font-weight:750;letter-spacing:-.25px;margin:2px 0 15px!important}
+.content p.portfolio-detail{font-size:14px;color:var(--muted);margin:0 0 12px}
+.portfolio-detail strong{color:var(--white)}
+.portfolio-actions{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 17px}
+.portfolio-actions a{display:inline-block;border:1px solid var(--cyan);color:var(--white);border-radius:9px;text-decoration:none;font-size:13px;font-weight:700;padding:10px 13px}
+.portfolio-actions a:first-child{background:#183f51}
+.portfolio-actions a:hover,.portfolio-actions a:focus-visible{background:#236078;outline:2px solid transparent}
+.accessibility{margin:48px 0 24px;padding:27px 30px;background:linear-gradient(140deg,#123848,#0a2332);border:1px solid #3c7787;border-radius:14px}
+.accessibility h2{font-size:25px;margin:0 0 12px}.accessibility p{max-width:1050px;color:var(--muted);margin:10px 0}.accessibility strong{color:var(--white)}
+.research-feature{margin:45px 0 36px;padding:32px;background:linear-gradient(130deg,#102f45,#102536);border:1px solid #3c748b;border-radius:14px}
+.research-feature h2{font-size:32px;margin:10px 0}.research-feature p{color:var(--muted);max-width:950px;margin:10px 0}.research-feature .research-subtitle{color:var(--white);font-size:19px;font-weight:600}
+.research-feature strong{color:var(--white)}.research-link{display:inline-block;border:1px solid var(--cyan);border-radius:9px;margin-top:18px;text-decoration:none;padding:11px 16px;background:#183f51;font-size:14px;font-weight:700}
+
+/* Visible source/repository directory: project links must not be buried in cards. */
+.repo-hub{margin:0 0 35px;padding:24px 26px 27px;border:1px solid #39798b;border-radius:14px;background:linear-gradient(140deg,#12394a,#0b2435)}
+.repo-hub-head{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between;margin-bottom:17px}
+.repo-hub h2{font-size:25px;margin:0}
+.repo-hub-head p{color:var(--muted);font-size:14px;margin:0;max-width:550px}
+.repo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.repo-entry{background:#091c2d;border:1px solid #2c5e72;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.repo-entry strong{font-size:15px}
+.repo-entry small{color:var(--muted);font-size:12px}
+.repo-entry a{color:var(--cyan);font-weight:750;font-size:13px;overflow-wrap:anywhere;text-underline-offset:3px}
+.repo-entry a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.repo-hub .research-quicklink{margin:14px 0 0;color:var(--muted);font-size:13px}
+.repo-hub .research-quicklink a{color:var(--cyan);font-weight:700}
+@media(max-width:900px){.repo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.repo-grid{grid-template-columns:1fr}.repo-hub{padding:18px}}
+</style></head>
+<body><div class="wrap">
+<header><div class="brand">FORGE <span>/</span> AI &amp; WEB SECURITY</div><nav>Founding engineering portfolio · November 2026</nav></header>
+<section class="hero"><div class="kicker">Selected engineering and security research</div>
+<h1>Build the system.<br><em>Prove the boundary.</em></h1>
+<p class="lead">Security technology should be accessible to everyone — from an individual building a business to an enterprise protecting complex infrastructure. Forge develops powerful, practical tools that people and organizations can operate themselves, without sacrificing capability as their needs grow. Explore what we have built, browse the projects, or request a demonstration.</p>
+<div class="stats"><div><b>06</b><span>Working security technologies</span></div><div><b>Any size</b><span>Individuals to enterprise infrastructure</span></div><div><b>Tested</b><span>Real applications and production environments</span></div></div></section>
+
+<section id="repositories" class="repo-hub" aria-labelledby="repo-hub-title">
+  <div class="repo-hub-head"><h2 id="repo-hub-title">GitHub repositories &amp; source access</h2><p>Explore project code on GitHub. Private repositories require an approved invitation; guided source review is available where downloads are not appropriate.</p></div>
+  <div class="repo-grid">
+    <div class="repo-entry"><strong>Forge Defense Factory</strong><small>Private GitHub repository</small><a href="https://github.com/RickDevops87/AI_Defence_Factory" target="_blank" rel="noopener noreferrer">View GitHub (access required) ↗</a></div>
+    <div class="repo-entry"><strong>Forge Activation Monitor</strong><small>Public GitHub repository</small><a href="https://github.com/RickDevops87/forge-activation-monitor" target="_blank" rel="noopener noreferrer">View repository on GitHub ↗</a></div>
+    <div class="repo-entry"><strong>Forge Audit Copilot</strong><small>Public GitHub repository</small><a href="https://github.com/RickDevops87/audit-copilot" target="_blank" rel="noopener noreferrer">View repository on GitHub ↗</a></div>
+    <div class="repo-entry"><strong>Forge CLI</strong><small>Private specialist tool</small><a href="https://github.com/RickDevops87/forge-cli" target="_blank" rel="noopener noreferrer">View GitHub (invitation required) ↗</a></div>
+    <div class="repo-entry"><strong>Forge CodeGraph</strong><small>Public GitHub repository</small><a href="https://github.com/RickDevops87/forge-codegraph" target="_blank" rel="noopener noreferrer">View repository on GitHub ↗</a></div>
+    <div class="repo-entry"><strong>Forge AI Security Assessment</strong><small>Public GitHub repository</small><a href="https://github.com/RickDevops87/forge-ai-security-assessment" target="_blank" rel="noopener noreferrer">View repository on GitHub ↗</a></div>
+  </div>
+  <p class="research-quicklink">Research: <a href="https://github.com/RickDevops87/Beyond_the_Weights" target="_blank" rel="noopener noreferrer">Beyond the Weights — working paper on GitHub ↗</a></p>
+</section>
+<div class="sectionhead"><h2>Explore our technology</h2><p>Each project addresses a real security challenge. Watch the showcase, explore the repository, or arrange a demonstration.</p></div>
+<div class="grid"><article class="card">
+  <div class="poster"><video controls preload="metadata" playsinline poster="posters/defense-factory.jpg"><source src="videos/defense-factory-forge-intro-reviewed-20261118.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+  <div class="content"><div class="eyebrow">Accessible security for every business</div><h2>Forge Defense Factory</h2><p class="value-tagline">Serious security. Within everyone's reach.</p><p class="portfolio-detail"><strong>What it does:</strong> Gives individuals, solo businesses and small to medium-sized teams a way to run security scans and tests on their own systems and AI applications, discover potential vulnerabilities and improve security awareness.</p><p class="portfolio-detail"><strong>Why we built it:</strong> Security expertise and ongoing protection should not be reserved for companies with large budgets or dedicated security teams. We built Defense Factory to make practical, guided security capabilities more accessible and affordable.</p><p class="portfolio-detail"><strong>The problem it solves:</strong> Helps organizations identify and understand weaknesses themselves, with a path to professional Forge assistance when remediation or deeper review is needed.</p><p class="portfolio-detail"><strong>Our intended offering:</strong> A one-time software purchase including user training and a 12-month licence with Forge security updates. An optional monthly Forge service would provide hands-on mitigation of discovered issues and specialized Audit SWAN agent and tool assessments of software updates before production, followed by mitigation assistance where required.</p><div class="portfolio-actions"><a href="https://github.com/RickDevops87/AI_Defence_Factory" target="_blank" rel="noopener noreferrer">GitHub (private — access required)</a><a href="mailto:forgew3s@proton.me?subject=Forge%20Defense%20Factory%20demonstration%20request">Request a demonstration</a></div><div class="meta"><span>44 seconds · 1080p</span><span>Project showcase</span></div></div>
+</article>
+<article class="card">
+  <div class="poster"><video controls preload="metadata" playsinline poster="posters/activation-monitor.jpg"><source src="videos/activation-monitor-forge-intro-reviewed-20261118.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+  <div class="content"><div class="eyebrow">AI agent visibility</div><h2>Forge Activation Monitor</h2><p class="value-tagline">Know what your AI agents are doing.</p><p class="portfolio-detail"><strong>What it does:</strong> Connects agent activity, tool requests and reported outcomes into an understandable investigation timeline.</p><p class="portfolio-detail"><strong>Why we built it:</strong> We built it so an independent developer, a small business or a large organization can understand security-relevant AI-agent behavior without having to create its own monitoring platform.</p><p class="portfolio-detail"><strong>The problem it solves:</strong> Makes agent monitoring and investigation practical for teams of any size, even when they lack a dedicated AI-security department.</p><div class="portfolio-actions"><a href="https://github.com/RickDevops87/forge-activation-monitor" target="_blank" rel="noopener noreferrer">Explore on GitHub</a><a href="mailto:forgew3s@proton.me?subject=Forge%20Activation%20Monitor%20demonstration%20request">Request a demonstration</a></div><div class="meta"><span>49 seconds · 1080p</span><span>Project showcase</span></div></div>
+</article>
+<article class="card">
+  <div class="poster"><video controls preload="metadata" playsinline poster="posters/audit-copilot.jpg"><source src="videos/audit-copilot-forge-intro-reviewed-20261118.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+  <div class="content"><div class="eyebrow">Smart contract auditing</div><h2>Forge Audit Copilot</h2><p class="value-tagline">From complex protocols to focused audits.</p><p class="portfolio-detail"><strong>What it does:</strong> Helps auditors map smart contract behavior, identify important invariants and develop targeted security tests.</p><p class="portfolio-detail"><strong>Why we built it:</strong> We wanted an individual auditor or small protocol team to have the kind of structured analysis support that complex smart contract security reviews demand.</p><p class="portfolio-detail"><strong>The problem it solves:</strong> Makes deeper protocol mapping and targeted security investigation more accessible, from independent audits to large multi-contract systems.</p><div class="portfolio-actions"><a href="https://github.com/RickDevops87/audit-copilot" target="_blank" rel="noopener noreferrer">Explore on GitHub</a><a href="mailto:forgew3s@proton.me?subject=Forge%20Audit%20Copilot%20demonstration%20request">Request a demonstration</a></div><div class="meta"><span>43 seconds · 1344×768</span><span>Project showcase</span></div></div>
+</article>
+<article class="card">
+  <div class="poster"><video controls preload="metadata" playsinline poster="posters/forge-cli.jpg"><source src="videos/forge-cli-historical-web3-captures-corrected-20261118.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+  <div class="content"><div class="eyebrow">Live web &amp; Web3 investigation</div><h2>Forge CLI</h2><p class="value-tagline">See what happens beyond the interface.</p><p class="portfolio-detail"><strong>What it does:</strong> Captures real browser, wallet, transaction, API and RPC activity, including exposed-key indicators and the evidence behind a user interaction.</p><p class="portfolio-detail"><strong>Why we built it:</strong> We built it because smart contract code alone cannot explain the risks that emerge across the full Web3 user journey.</p><p class="portfolio-detail"><strong>The problem it solves:</strong> Gives security engineers visibility into live application behavior that isolated code scans miss.</p><div class="portfolio-actions"><a href="https://github.com/RickDevops87/forge-cli" target="_blank" rel="noopener noreferrer">GitHub (private — invitation required)</a><a href="mailto:forgew3s@proton.me?subject=Forge%20CLI%20demonstration%20request">Request a demonstration</a></div><div class="meta"><span>40 seconds · 1344×768</span><span>Project showcase</span></div></div>
+</article>
+<article class="card">
+  <div class="poster"><video controls preload="metadata" playsinline poster="posters/codegraph.jpg"><source src="videos/codegraph-forge-intro-reviewed-20261118.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+  <div class="content"><div class="eyebrow">Solidity architecture intelligence</div><h2>Forge CodeGraph</h2><p class="value-tagline">Reveal the connections inside Solidity.</p><p class="portfolio-detail"><strong>What it does:</strong> Maps contract relationships, permissions, state access and execution paths into a navigable, source-linked picture.</p><p class="portfolio-detail"><strong>Why we built it:</strong> We built it to give individual developers, small teams and enterprise auditors a clearer way to understand Solidity systems without spending days manually tracing every dependency.</p><p class="portfolio-detail"><strong>The problem it solves:</strong> Makes complex contract architecture and high-value security paths easier to explore, whether the target is a single protocol or a large codebase.</p><div class="portfolio-actions"><a href="https://github.com/RickDevops87/forge-codegraph" target="_blank" rel="noopener noreferrer">Explore on GitHub</a><a href="mailto:forgew3s@proton.me?subject=Forge%20CodeGraph%20demonstration%20request">Request a demonstration</a></div><div class="meta"><span>99 seconds · 720p review</span><span>Project showcase</span></div></div>
+</article>
+<article class="card">
+  <div class="poster"><video controls preload="metadata" playsinline poster="posters/ai-security-assessment-cinematic-20261118.jpg"><source src="videos/ai-security-assessment-cinematic-marcus-forge-intro-review-20261118.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+  <div class="content"><div class="eyebrow">AI application security</div><h2>Forge AI Security Assessment</h2><p class="value-tagline">Test the boundaries of AI-powered systems.</p><p class="portfolio-detail"><strong>What it does:</strong> Investigates how AI models, untrusted inputs, tool permissions and application actions interact under controlled security tests.</p><p class="portfolio-detail"><strong>Why we built it:</strong> We wanted AI builders of every size — from solo developers and startups to established enterprises — to be able to investigate the security of model-driven applications and tools.</p><p class="portfolio-detail"><strong>The problem it solves:</strong> Puts structured AI trust-boundary assessment within reach of smaller teams while supporting deeper investigations across complex applications.</p><div class="portfolio-actions"><a href="https://github.com/RickDevops87/forge-ai-security-assessment" target="_blank" rel="noopener noreferrer">Explore on GitHub</a><a href="mailto:forgew3s@proton.me?subject=Forge%20AI%20Security%20Assessment%20demonstration%20request">Request a demonstration</a></div><div class="meta"><span>71 seconds · 720p review</span><span>Cinematic project showcase</span></div></div>
+</article></div>
+<section class="accessibility"><h2>Built for everyone. Ready to scale.</h2>
+<p>The same serious security capabilities should be available to a one-person business, a growing company and an organization operating large infrastructure. Forge's systems have been built and exercised on real applications and production environments. Our next step is making them available more widely.</p>
+<p><strong>Our intended access model</strong> for the five software products shown here, excluding Forge CLI: affordable one-time software purchase, onboarding and training, a 12-month licence with security updates, and optional ongoing Forge assistance for mitigation and specialized pre-production security assessments. Commercial release details will be announced separately.</p>
+<p>Explore the repositories where available, or <a href="mailto:forgew3s@proton.me?subject=Forge%20Security%20Technology%20Demonstration">request a live demonstration</a>.</p></section>
+<section class="research-feature"><div class="eyebrow">Independent research · November 2026</div>
+<h2>Beyond the Weights</h2>
+<p class="research-subtitle">Why the AI Industry Must Rethink Training, Trust, Continuity and Human–AI Development</p>
+<p>Our work extends beyond software. In <em>Beyond the Weights</em>, Forge founder Rick Nieuwoudt examines how AI capability is shaped not only by model training, but by the environment in which people and AI systems work together: tools, context, continuity, constructive challenge, practical experience and accountability.</p>
+<p>The paper introduces <strong>Collaborative AI Development</strong> — an approach that treats sustained, responsible human–AI collaboration as an important part of developing reliable, useful AI systems.</p>
+<a class="research-link" href="https://github.com/RickDevops87/Beyond_the_Weights" target="_blank" rel="noopener noreferrer">Read the working paper on GitHub</a></section>
+<div class="sectionhead"><h2>Founder introduction — personal recording</h2><p>A direct-to-camera introduction is planned; we are deliberately not using the prior synthetic EcoGPT showcase as a substitute for the founder speaking.</p></div>
+<article class="card" style="max-width:720px"><div class="content"><div class="eyebrow">FOUNDER INTRODUCTION</div><h2>Meet the founder</h2><p>This section is reserved for the founder's own recording. Forge was already preparing to take its security technology to market when he discovered EcoGPT by chance. At first, it looked like a promising potential customer. Learning about its mission, values and founding-engineer opportunity changed that perspective: he saw a team he could grow with, contribute to and learn from. The introduction will focus on engineering, security, collaborative human–AI development and what he hopes to build alongside EcoGPT's people. No employment, partnership or product integration has been agreed or implied.</p><div class="meta"><span>Awaiting founder recording</span><span>Original companion video retained privately</span></div></div></article>
+<div class="note"><strong>Explore Forge</strong><p>Want a closer look? Browse the public repositories, ask for access to a private project, or <a href="mailto:forgew3s@proton.me?subject=Forge%20Technology%20Demonstration">request a guided demonstration</a>. Our team can walk you through how the technology works on a suitable authorized test environment.</p></div>
+<p class="repo-note">Open-source repositories can be explored directly. For private projects or a live walkthrough, contact Forge for access or a demonstration.</p><footer>FORGE · RESEARCH / SECURITY ENGINEERING / AUDITING &nbsp; · &nbsp; Engineering and security portfolio · November 2026</footer>
+</div></body></html>
